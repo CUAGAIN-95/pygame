@@ -1,18 +1,21 @@
+from pathlib import Path
 import sys
 import pygame
 from Screen import Screen
-from Player import Player
+from Unit import Player
 
 
 # 초기화 필수
 pygame.init()
 
 # 화면 제목 설정
-pygame.display.set_caption("pygame")
+pygame.display.set_caption("pygame_pang")
+
+# 이미지 경로
+image_path = Path.joinpath(Path.cwd(), "images")
 
 # 배경
-screen = Screen()
-screen.display = pygame.display.set_mode((screen.width, screen.height))
+screen = Screen(image_path)
 
 # 캐릭터
 player = Player(screen)
@@ -45,7 +48,8 @@ while True:
 
     player.move(screen, dt)
 
-    screen.display.fill(screen.color)
+    screen.display.blit(screen.background_image, (0, 0))
+    screen.display.blit(screen.stage_image, (0, screen.height - screen.stage_height))
     pygame.draw.rect(screen.display, player.color, (player.x_pos, player.y_pos, player.width, player.height))
     # 창 새로고침
     pygame.display.update()
