@@ -1,3 +1,5 @@
+# player의 기본 데이터를 저장하는 클래스
+
 class Player:
     def __init__(self, screen):
         self.color = (111, 111, 111)

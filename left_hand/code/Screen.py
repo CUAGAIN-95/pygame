@@ -1,3 +1,4 @@
+# screen의 기본 데이터를 저장하는 클래스
 import pygame
 
 
